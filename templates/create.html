@@ -1,17 +1,37 @@
 {% extends 'base.html' %}
 
 {% block content %}
-{% if user.is_authentifated %}
-  <form method="POST" enctype="multipart/form-data">{% csrf_token %}
-    <p>title:<input type="text" name="title"></p>
-    <p>content:<input type="text" name="content"></p>
-    <p><input type="file" name="snsimage"></p>
-    <input type="hidden" name="author" value="{{ user.username }}">
 
-    <input type="submit" value="create">
-  </form>
-{% else %}
-please login
-{% endif %}
-
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-6" style="background-color: aliceblue;padding: 30px;">
+      <h2>【新規作成】</h2>
+      {% if user.is_authenticated %}
+        <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+          <div>
+            <p>
+              Title<br>
+              <input type="text" name="title">
+            </p>
+          </div>
+          <div>
+            <p>
+              Content<br>
+              <input type="text" name="content">
+            </p>
+          </div>
+          <div>
+            <p>
+              <input type="file" name="snsimage">
+            </p>
+          </div>
+          <input type="hidden" name="author" value="{{ user.username }}">
+          <input type="submit" value="create">
+        </form>
+      {% else %}
+        please login
+      {% endif %}
+    </div>
+  </div>
+</div>
 {% endblock content %}

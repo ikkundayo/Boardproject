@@ -2,24 +2,27 @@
 
 {% block header%}
 <div class="alert alert-primary" role="alert">
-  <h3>社内SNS</h3>
+  <h2 class="text-center">社内掲示板</h2>
 </div>
 {% endblock header%}
 
 {% block content%}
+<div style="text-align: end;margin: 0px 50px;">
+  <h4 style="display: inline-block; margin: 0px 50px;"><a href="{% url 'create' %}">Create</a></h4>
+  <h4 style="display: inline-block;"><a href="{% url 'logout' %}">Logout</a></h4>
+</div>
 {% if user.is_authenticated %}
   <div class="container">
     {% for item in object_list %}
       <div class="alert alert-success" role="alert">
-        <p>タイトル：<a href="{% url 'detail' item.pk %}">{{ item.title }}</a></p>
+        <h5>タイトル：<a href="{% url 'detail' item.pk %}">{{ item.title }}</a></h5>
         <p>投稿者：{{ item.author }}</p>
         <a href="#" class="btn btn-primary disabled" role="button" aria-pressed="true">いいね {{ item.good }}件</a>
         <a href="#" class="btn btn-secondary disabled" role="button" aria-pressed="true">既読 {{ item.read }}人</a>
       </div>
     {% endfor %}
-    <a href="{% url 'logout' %}">Logout</a>
   </div>
 {% else %}
-  please login
+  <h2 class="text-center">ログインもしくは新規登録してご利用ください!</h2>
 {% endif %}
 {% endblock content%}

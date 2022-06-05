@@ -8,15 +8,16 @@
 {% block content %}
 
 <body  class="text-center" >
-  {{ error }}
   <form class="form-signin" method="POST">{% csrf_token %}
-    <h1 class="h3 mb-3 font-weight-normal">サインインする</h1>
+    <img class="mb-4" src="{% static 'test2.jpg' %}" alt="" width="200" height="200">
+    <h1 class="h3 mb-3 font-weight-normal">Sign up</h1>
     <label for="inputEmail" class="sr-only">メールアドレス</label>
     <input type="text" id="inputEmail" class="form-control" placeholder="username" name='username' required autofocus>
     <label for="inputPassword" class="sr-only">パスワード</label>
     <input type="password" id="inputPassword" class="form-control" placeholder="password" name='password' required>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">サインイン</button>
-    <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+    <p style="font-size: 15px;">{{ error }}</p>
+    <p class="mt-5 mb-3 text-muted"><a href="{% url 'login' %}">Log in</a></p>
   </form>
 </body>
 {% endblock content %}

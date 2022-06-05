@@ -2,7 +2,7 @@
 
 {% block header%}
 <div class="alert alert-primary" role="alert">
-  <h3>detail page</h3>
+  <h2 class="text-center">Detail page</h2>
 </div>
 {% endblock header%}
 
@@ -10,8 +10,9 @@
 {% if user.is_authenticated %}
   <div class="container">
       <div class="alert alert-success" role="alert">
-        <p>タイトル：{{ object.title }}</p>
-        <p>投稿者：{{ object.author }}</p>
+        <h5>タイトル：{{ object.title }}</h5>
+        <div>投稿者：{{ object.author }}</div>
+        <p>内容：{{ object.content }}</p>
         <p><img src="{{ object.snsimage.url }}" width="300"></p>
         <a href="{% url 'good' object.pk %}" class="btn btn-primary" role="button" aria-pressed="true">いいね</a>
         <a href="{% url 'read' object.pk %}" class="btn btn-secondary" role="button" aria-pressed="true">既読にする</a>
